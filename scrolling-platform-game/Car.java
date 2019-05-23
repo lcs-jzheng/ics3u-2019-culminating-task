@@ -15,5 +15,17 @@ public class Car extends Actor
     public void act() 
     {
         // Add your action code here.
+       if (Greenfoot.isKeyDown("w"))
+       {move(3);
+        }
+        if (Greenfoot.isKeyDown("s"))
+       {move(-3);
+        }
+        if (Greenfoot.isKeyDown("a"))
+       {turn(-3);
+        }
+        if (Greenfoot.isKeyDown("d"))
+       {turn(3);
+        }
     }    
 }
