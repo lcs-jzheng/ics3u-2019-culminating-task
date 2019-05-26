@@ -93,7 +93,16 @@ public class SideScrollingWorld extends World
         
         
         addCAR();
+        //Add some sides on the right
+        for (int i = 0; i <= 1; i += 1)
+        {
+            int x = TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+            int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
 
+           Side sideR = new Side(x,y);
+           addObject(sideR,x,y);
+
+        }
     }
 
     /**
@@ -222,12 +231,12 @@ public class SideScrollingWorld extends World
     {
         // Initial horizontal position
         int initialX = TILE_SIZE * 8;
-        int initialY = TILE_SIZE * 6;
+        int initialY = TILE_SIZE * 16;
         // Instantiate the hero object
         theCAR = new Car();
 
         // Add hero in bottom left corner of screen
-        addObject(theCAR, initialX,initialY );
+        addObject(theCAR, initialX, initialY );
     }
 
     /**
