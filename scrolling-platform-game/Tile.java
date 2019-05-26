@@ -44,4 +44,19 @@ public abstract class Tile extends Actor
         setLocation(getX() + speed, getY());
     }
     
+    /**
+     * Move up (to make hero look like they are moving up)
+     */
+    public void moveUp(int speed)
+    {
+        setLocation(getX(), getY() - speed);
+    }
+    
+     /**
+     * Move down (to make hero look like they are moving down)
+     */
+    public void moveDown(int speed)
+    {
+        setLocation(getX(), getY() + speed);
+    }
 }

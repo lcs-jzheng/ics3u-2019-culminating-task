@@ -21,20 +21,21 @@ public class SideScrollingWorld extends World
     // World size constants
     // TO STUDENTS: Modify only if you're sure
     //              Should be a resolution that's a multiple of TILE_SIZE
-    private static final int VISIBLE_WIDTH = 480;
-    private static final int VISIBLE_HEIGHT = 640;
+    public static final int VISIBLE_WIDTH = 480;
+    public static final int VISIBLE_HEIGHT = 640;
 
     // Additional useful constants based on world size
     public static final int HALF_VISIBLE_WIDTH = VISIBLE_WIDTH / 2;
-    private static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
+    public static final int HALF_VISIBLE_HEIGHT = VISIBLE_HEIGHT / 2;
 
     // Defining the boundaries of the scrollable world
     // TO STUDENTS: Modify SCROLLABLE_WIDTH if you wish to have a longer level
     public static final int SCROLLABLE_WIDTH = VISIBLE_WIDTH;
-    private static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT * 3;
+    public static final int SCROLLABLE_HEIGHT = VISIBLE_HEIGHT * 3;
 
     // Hero
     Hero theHero;
+    Car theCAR;
 
     // Track whether game is on
     private boolean isGameOver;
@@ -69,28 +70,29 @@ public class SideScrollingWorld extends World
         // addRightGround();
 
         //Add some metal plate at left
-        for (int i = 0; i <= 4; i += 1)
-        {
-            int x = TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
+        //for (int i = 0; i <= 4; i += 1)
+        //{
+            //int x = TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+            //int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
 
-            MetalPlate plate = new MetalPlate(x,y);
-            addObject(plate,x,y);
+           //MetalPlate plate = new MetalPlate(x,y);
+           //addObject(plate,x,y);
 
-        }
+        //}
         
-        //Add some metal tiles to the right
-        for (int i = 0; i <= 10; i += 1)
-        {
-            int x =8 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
+        ////Add some metal tiles to the right
+        //for (int i = 0; i <= 10; i += 1)
+        //{
+            //int x =8 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+            //int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
 
-            Ground someGround = new Ground(x,y);
-            addObject(someGround,x,y);
+            //Ground someGround = new Ground(x,y);
+            //addObject(someGround,x,y);
 
-        }
+       //}
         
-        addHero();
+        
+        addCAR();
 
     }
 
@@ -211,6 +213,21 @@ public class SideScrollingWorld extends World
 
         // Add hero in bottom left corner of screen
         addObject(theHero, initialX, getHeight() / 5);
+    }
+
+    /**
+     * Add the CAR to the world.
+     */
+    private void addCAR()
+    {
+        // Initial horizontal position
+        int initialX = TILE_SIZE * 8;
+        int initialY = TILE_SIZE * 6;
+        // Instantiate the hero object
+        theCAR = new Car();
+
+        // Add hero in bottom left corner of screen
+        addObject(theCAR, initialX,initialY );
     }
 
     /**
