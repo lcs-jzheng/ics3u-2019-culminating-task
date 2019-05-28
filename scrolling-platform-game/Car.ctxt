@@ -1,10 +1,13 @@
 #BlueJ class context
 comment0.target=Car
-comment0.text=\n\ Write\ a\ description\ of\ class\ CAR\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ CAR\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment0.text=\n\ This\ is\ a\ car\ that\ will\ move\ around\ the\ world\ and\ it\ will\ be\ passing\ throught\ road\ till\ the\ end.\n\ \n\ Jeff\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=initialY
+comment1.target=Car(int)
+comment1.text=\n\ Constructor\n\ \n\ This\ runs\ once\ when\ the\ Hero\ object\ is\ created.\n
 comment2.params=
-comment2.target=void\ moveUp()
-comment2.text=\n\ Move\ the\ hero\ to\ the\ up.\n
-numComments=3
+comment2.target=void\ act()
+comment2.text=\n\ Act\ -\ do\ whatever\ the\ CAR\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment3.params=
+comment3.target=void\ moveUp()
+comment3.text=\n\ Move\ the\ hero\ to\ the\ up.\n
+numComments=4

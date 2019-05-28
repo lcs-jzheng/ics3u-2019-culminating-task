@@ -163,6 +163,21 @@ public class SideScrollingWorld extends World
             addObject(pL4,x,y1);
 
         }
+        //Add some AI in the game
+        for (int i = 1; i <= 1; i += 1)
+        {
+            int x = 5 * TILE_SIZE -HALF_TILE_SIZE ;
+            int y = -i * TILE_SIZE + HALF_TILE_SIZE;
+            int y1 = 2 * i * TILE_SIZE - HALF_TILE_SIZE;
+            int y2 = 4 * i * TILE_SIZE - HALF_TILE_SIZE;
+            AI1 E1 = new AI1 (x,y);
+            AI1 E2 = new AI1 (x,y1);
+            AI1 E3 = new AI1 (x,y2);
+            addObject(E1,x,y);
+            addObject(E2,x,y1);
+            addObject(E3,x,y2);
+
+        }
     }
 
     /**
@@ -267,6 +282,7 @@ public class SideScrollingWorld extends World
      */
     public void act()
     {
+
     }
 
     /**
@@ -293,7 +309,7 @@ public class SideScrollingWorld extends World
         int initialX = TILE_SIZE * 8;
         int initialY = TILE_SIZE * 16;
         // Instantiate the hero object
-        theCAR = new Car();
+        theCAR = new Car(initialY);
 
         // Add hero in bottom left corner of screen
         addObject(theCAR, initialX, initialY );
@@ -351,7 +367,10 @@ public class SideScrollingWorld extends World
      */
     public void setGameOver()
     {
-        isGameOver = true;
+        // if(currentScrollableWorldYPosition == 635);
+        // {
+            // isGameOver = true;
+        // }
     }
 }
 
