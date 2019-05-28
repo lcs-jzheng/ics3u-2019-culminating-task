@@ -134,7 +134,7 @@ public class Car extends Actor
                 currentScrollableWorldYPosition = getY();
             }            
         }
-        else if (currentScrollableWorldYPosition + deltaY * 2 < world.SCROLLABLE_HEIGHT - world.HALF_VISIBLE_HEIGHT)
+        else if (currentScrollableWorldYPosition + deltaY * 2 < (world.SCROLLABLE_HEIGHT - world.HALF_VISIBLE_HEIGHT) * -1)
         {
            
             // HERO IS WITHIN EXTREME UPPER PORTION OF SCROLLABLE WORLD
@@ -142,7 +142,7 @@ public class Car extends Actor
             System.out.println("extreme top");
 
             // Allow movement only when not at edge of world
-            if (currentScrollableWorldYPosition > world.SCROLLABLE_HEIGHT - this.getImage().getHeight() / 2)
+            if (currentScrollableWorldYPosition > world.VISIBLE_HEIGHT * 3 * -1)
             {
                 // Move up in visible world
                 int newVisibleWorldYPosition = getY() - deltaY;
