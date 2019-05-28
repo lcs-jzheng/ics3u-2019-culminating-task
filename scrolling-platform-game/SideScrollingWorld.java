@@ -94,14 +94,27 @@ public class SideScrollingWorld extends World
         
         addCAR();
         //Add some sides on the right
-        for (int i = 1; i <= 1; i += 1)
+        for (int i = 1; i <= 501; i += 1)
         {
-            int x = TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 5 * TILE_SIZE + HALF_TILE_SIZE;
-
-           
-           
-
+            int x = TILE_SIZE + HALF_TILE_SIZE + 1 * TILE_SIZE;
+            int y = -i * TILE_SIZE + HALF_TILE_SIZE;
+            int y1 = i * TILE_SIZE - HALF_TILE_SIZE;
+            roadL road1 = new roadL (x,y);
+            roadL road2 = new roadL (x,y1);
+            addObject(road1,x,y);
+            addObject(road2,x,y1);
+            
+        }
+        for (int i = 1; i <= 501; i += 1)
+        {
+            int x = TILE_SIZE + HALF_TILE_SIZE + 11 * TILE_SIZE;
+            int y = -i * TILE_SIZE + HALF_TILE_SIZE;
+            int y1 = i * TILE_SIZE - HALF_TILE_SIZE;
+            roadR road1 = new roadR (x,y);
+            roadR road2 = new roadR (x,y1);
+            addObject(road1,x,y);
+            addObject(road2,x,y1);
+            
         }
     }
 
