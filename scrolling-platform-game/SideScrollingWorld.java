@@ -72,28 +72,28 @@ public class SideScrollingWorld extends World
         //Add some metal plate at left
         //for (int i = 0; i <= 4; i += 1)
         //{
-            //int x = TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            //int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
+        //int x = TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+        //int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
 
-           //MetalPlate plate = new MetalPlate(x,y);
-           //addObject(plate,x,y);
+        //MetalPlate plate = new MetalPlate(x,y);
+        //addObject(plate,x,y);
 
         //}
-        
+
         ////Add some metal tiles to the right
         //for (int i = 0; i <= 10; i += 1)
         //{
-            //int x =8 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            //int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
+        //int x =8 * TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
+        //int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
 
-            //Ground someGround = new Ground(x,y);
-            //addObject(someGround,x,y);
+        //Ground someGround = new Ground(x,y);
+        //addObject(someGround,x,y);
 
-       //}
-        
-        
+        //}
+
+        //added in car, the main character into the game
         addCAR();
-        //Add some sides on the right
+        //Add some sides on the left
         for (int i = 1; i <= 501; i += 1)
         {
             int x = TILE_SIZE + HALF_TILE_SIZE + 1 * TILE_SIZE;
@@ -103,8 +103,9 @@ public class SideScrollingWorld extends World
             roadL road2 = new roadL (x,y1);
             addObject(road1,x,y);
             addObject(road2,x,y1);
-            
+
         }
+        //Add some sides on the right
         for (int i = 1; i <= 501; i += 1)
         {
             int x = TILE_SIZE + HALF_TILE_SIZE + 11 * TILE_SIZE;
@@ -114,8 +115,9 @@ public class SideScrollingWorld extends World
             roadR road2 = new roadR (x,y1);
             addObject(road1,x,y);
             addObject(road2,x,y1);
-            
+
         }
+        //Add some grass on the right
         for (int i = 1; i <= 501; i += 1)
         {
             int x = TILE_SIZE + HALF_TILE_SIZE + 12 * TILE_SIZE;
@@ -125,7 +127,7 @@ public class SideScrollingWorld extends World
             grass pR2 = new grass (x,y1);
             addObject(pR1,x,y);
             addObject(pR2,x,y1);
-            
+
         }
         for (int i = 1; i <= 501; i += 1)
         {
@@ -136,8 +138,9 @@ public class SideScrollingWorld extends World
             grass pR4 = new grass (x,y1);
             addObject(pR3,x,y);
             addObject(pR4,x,y1);
-            
+
         }
+        //Add some grass on the left
         for (int i = 1; i <= 501; i += 1)
         {
             int x = 1 * TILE_SIZE + HALF_TILE_SIZE;
@@ -147,7 +150,7 @@ public class SideScrollingWorld extends World
             grass pL2 = new grass (x,y1);
             addObject(pL1,x,y);
             addObject(pL2,x,y1);
-            
+
         }
         for (int i = 1; i <= 501; i += 1)
         {
@@ -158,7 +161,7 @@ public class SideScrollingWorld extends World
             grass pL4 = new grass (x,y1);
             addObject(pL3,x,y);
             addObject(pL4,x,y1);
-            
+
         }
     }
 
