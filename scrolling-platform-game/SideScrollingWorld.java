@@ -116,6 +116,50 @@ public class SideScrollingWorld extends World
             addObject(road2,x,y1);
             
         }
+        for (int i = 1; i <= 501; i += 1)
+        {
+            int x = TILE_SIZE + HALF_TILE_SIZE + 12 * TILE_SIZE;
+            int y = -i * TILE_SIZE + HALF_TILE_SIZE;
+            int y1 = i * TILE_SIZE - HALF_TILE_SIZE;
+            grass pR1 = new grass (x,y);
+            grass pR2 = new grass (x,y1);
+            addObject(pR1,x,y);
+            addObject(pR2,x,y1);
+            
+        }
+        for (int i = 1; i <= 501; i += 1)
+        {
+            int x = TILE_SIZE + HALF_TILE_SIZE + 13 * TILE_SIZE;
+            int y = -i * TILE_SIZE + HALF_TILE_SIZE;
+            int y1 = i * TILE_SIZE - HALF_TILE_SIZE;
+            grass pR3 = new grass (x,y);
+            grass pR4 = new grass (x,y1);
+            addObject(pR3,x,y);
+            addObject(pR4,x,y1);
+            
+        }
+        for (int i = 1; i <= 501; i += 1)
+        {
+            int x = 1 * TILE_SIZE + HALF_TILE_SIZE;
+            int y = -i * TILE_SIZE + HALF_TILE_SIZE;
+            int y1 = i * TILE_SIZE - HALF_TILE_SIZE;
+            grass pL1 = new grass (x,y);
+            grass pL2 = new grass (x,y1);
+            addObject(pL1,x,y);
+            addObject(pL2,x,y1);
+            
+        }
+        for (int i = 1; i <= 501; i += 1)
+        {
+            int x = 1 * TILE_SIZE -HALF_TILE_SIZE ;
+            int y = -i * TILE_SIZE + HALF_TILE_SIZE;
+            int y1 = i * TILE_SIZE - HALF_TILE_SIZE;
+            grass pL3 = new grass (x,y);
+            grass pL4 = new grass (x,y1);
+            addObject(pL3,x,y);
+            addObject(pL4,x,y1);
+            
+        }
     }
 
     /**
