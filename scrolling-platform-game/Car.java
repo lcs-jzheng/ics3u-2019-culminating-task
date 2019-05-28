@@ -25,6 +25,7 @@ public class Car extends Actor
     private String verticalDirection;
 
     private int currentScrollableWorldYPosition;
+    private int Life = 3;
     /**
      * Act - do whatever the CAR wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -46,6 +47,28 @@ public class Car extends Actor
         {
             //MOVE RIGHT
             move(3);
+        }
+
+        if(isTouching(AI1.class) == true)
+        {
+            Life = Life - 1;
+        }
+        if(isTouching(AI2.class) == true)
+        {
+            Life = Life - 1;
+        }
+        if(isTouching(AI3.class) == true)
+        {
+            Life = Life - 1;
+        }
+        if(Life == 0)
+        {
+            // Get object reference to world
+            SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
+            world.showText("GameOver", world.getWidth() / 2, world.getHeight() / 2);
+            Greenfoot.stop();
+            
+
         }
     }    
 
@@ -135,5 +158,5 @@ public class Car extends Actor
         } 
 
     }
-    
+
 }

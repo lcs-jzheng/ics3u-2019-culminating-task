@@ -94,13 +94,13 @@ public class SideScrollingWorld extends World
         
         addCAR();
         //Add some sides on the right
-        for (int i = 0; i <= 1; i += 1)
+        for (int i = 1; i <= 1; i += 1)
         {
             int x = TILE_SIZE + HALF_TILE_SIZE + i * TILE_SIZE;
-            int y = 4 * TILE_SIZE + HALF_TILE_SIZE;
+            int y = 5 * TILE_SIZE + HALF_TILE_SIZE;
 
-           Side sideR = new Side(x,y);
-           addObject(sideR,x,y);
+           
+           
 
         }
     }
