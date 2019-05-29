@@ -40,6 +40,8 @@ public class SideScrollingWorld extends World
     // Track whether game is on
     private boolean isGameOver;
 
+    //Keep track of the time in the game
+    private int frames = 0;
     /**
      * Constructor for objects of class SideScrollingWorld.
      */
@@ -91,8 +93,7 @@ public class SideScrollingWorld extends World
 
         //}
 
-        //added in car, the main character into the game
-        addCAR();
+        
         //Add some sides on the left
         for (int i = 1; i <= 501; i += 1)
         {
@@ -163,23 +164,10 @@ public class SideScrollingWorld extends World
             addObject(pL4,x,y1);
 
         }
-        //Add some AI in the game
-        for (int i = 1; i <= 1; i += 1)
-        {
-            int x = 5 * TILE_SIZE -HALF_TILE_SIZE ;
-            int y = -i * TILE_SIZE + HALF_TILE_SIZE;
-            int y1 = 2 * i * TILE_SIZE - HALF_TILE_SIZE;
-            int y2 = 4 * i * TILE_SIZE - HALF_TILE_SIZE;
-            AI1 E1 = new AI1 (x,y);
-            AI1 E2 = new AI1 (x,y1);
-            AI1 E3 = new AI1 (x,y2);
-            addObject(E1,x,y);
-            addObject(E2,x,y1);
-            addObject(E3,x,y2);
-
-        }
+        
+        //added in car, the main character into the game
+        addCAR();
     }
-
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
      */
@@ -282,7 +270,31 @@ public class SideScrollingWorld extends World
      */
     public void act()
     {
+        // Every 60 frames, update the time
+        int x = 4 + Greenfoot.getRandomNumber(8);
+        AI1 AI1 = new AI1();
+        AI2 AI2 = new AI2();
+        AI3 AI3 = new AI3();
+        // Increment frame (roughly 60 frames per second)
+        frames = frames + 1;
+        if ((frames % 6) == 0)
+        {
+            String timeElapsed = Integer.toString(frames / 6);
+            addObject(AI1,x * TILE_SIZE -HALF_TILE_SIZE,0);
 
+        }
+        if ((frames % 5) == 0)
+        {
+            String timeElapsed = Integer.toString(frames / 5);
+            addObject(AI3,x * TILE_SIZE -HALF_TILE_SIZE,0);
+
+        }
+        if ((frames % 7) == 0)
+        {
+            String timeElapsed = Integer.toString(frames / 7);
+            addObject(AI2,x * TILE_SIZE -HALF_TILE_SIZE,0);
+
+        }
     }
 
     /**
@@ -369,7 +381,7 @@ public class SideScrollingWorld extends World
     {
         // if(currentScrollableWorldYPosition == 635);
         // {
-            // isGameOver = true;
+        // isGameOver = true;
         // }
     }
 }

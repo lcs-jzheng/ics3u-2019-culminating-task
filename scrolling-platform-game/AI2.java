@@ -6,16 +6,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class AI2 extends Decoration
+public class AI2 extends Actor
 {
-    /**
-     * Constructor
-     * 
-     * Called once when object is created.
-     */
-    AI2(int scrollableWorldX, int scrollableWorldY)
+    public AI2()
     {
-        super(scrollableWorldX, scrollableWorldY);
+        //Only runs once
+        turn(90);
     }
     /**
      * Act - do whatever the AI2 wants to do. This method is called whenever
@@ -24,5 +20,7 @@ public class AI2 extends Decoration
     public void act() 
     {
         // Add your action code here.
+        
+        move(2);
     }    
 }

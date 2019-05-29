@@ -26,9 +26,15 @@ public class Car extends Actor
     private static final String FACING_UP = "up";
     private static final String FACING_DOWN = "down";
     private String verticalDirection;
-
+    // current Y position in the world to keep track 
     private int currentScrollableWorldYPosition;
+    //Life the car got
     private int Life = 3;
+    
+    //The score player will get
+    private int Score = 0;
+    //sound it will play after hitting the cars
+    GreenfootSound boom;
     /**
      * Constructor
      * 
@@ -47,17 +53,19 @@ public class Car extends Actor
      */
     public void act() 
     {
-
+        //Score added 60 each second
+        Score = Score + 1;
+        boom = new GreenfootSound("explosion.wav");
+        
         // Get object reference to world
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
-        //Show the actors life status
+        //Show the actors life and Score status
         world.showText("Life :" + Life, 440, 40);
+        world.showText("Score :" + Score, 40, 40);
+        
+        
         // Add your action code here.
-        if (Greenfoot.isKeyDown("w"))
-        {
-            // MOVE THE ACTOR UP
-            moveUp();
-        }
+        moveUp();
         if (Greenfoot.isKeyDown("a"))
         {
             //MOVE LEFT
@@ -71,18 +79,36 @@ public class Car extends Actor
 
         if(isTouching(AI1.class) == true && !isTouchingEnemy)
         {
+            AI1 enemy = (AI1)getOneIntersectingObject(AI1.class);
+            getWorld().removeObject(enemy);
+            
             Life = Life - 1;
+            
             isTouchingEnemy = true;
+            
+            boom.play();
         }
-        if(isTouching(AI2.class) == true)
+        if(isTouching(AI2.class) == true && !isTouchingEnemy)
         {
-            Life = Life - 1;
+            AI2 boss = (AI2)getOneIntersectingObject(AI2.class);
+            getWorld().removeObject(boss);
+            
+            Score = Score +1000;
+           
             isTouchingEnemy = true;
+            
+            boom.play();
         }
-        if(isTouching(AI3.class) == true)
+        if(isTouching(AI3.class) == true && !isTouchingEnemy)
         {
+            AI3 enemy = (AI3)getOneIntersectingObject(AI3.class);
+            getWorld().removeObject(enemy);
+            
             Life = Life - 1;
+            
             isTouchingEnemy = true;
+            
+            boom.play();
         }
         if (isTouching(AI1.class) == false && (isTouching(AI2.class) == false && (isTouching(AI3.class) == false && isTouchingEnemy)))
         {
