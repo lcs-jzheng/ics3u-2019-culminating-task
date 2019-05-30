@@ -42,6 +42,8 @@ public class SideScrollingWorld extends World
 
     //Keep track of the time in the game
     private int frames = 0;
+    
+    GreenfootSound backgroundMusic = new GreenfootSound("SH_BGM.mp3");
     /**
      * Constructor for objects of class SideScrollingWorld.
      */
@@ -57,6 +59,8 @@ public class SideScrollingWorld extends World
 
         // Game on
         isGameOver = false;
+        
+        backgroundMusic.playLoop();
     }
 
     /**
@@ -92,7 +96,7 @@ public class SideScrollingWorld extends World
         //addObject(someGround,x,y);
 
         //}
-
+        
         
         //Add some sides on the left
         for (int i = 1; i <= 501; i += 1)
@@ -164,10 +168,11 @@ public class SideScrollingWorld extends World
             addObject(pL4,x,y1);
 
         }
-        
+
         //added in car, the main character into the game
         addCAR();
     }
+
     /**
      * Add blocks to create the ground to walk on at bottom-left of scrollable world.
      */
@@ -270,30 +275,44 @@ public class SideScrollingWorld extends World
      */
     public void act()
     {
+        
+        
         // Every 60 frames, update the time
         int x = 4 + Greenfoot.getRandomNumber(8);
         AI1 AI1 = new AI1();
         AI2 AI2 = new AI2();
         AI3 AI3 = new AI3();
+        Tree Tree = new Tree();
+        Tree Tree2 = new Tree();
         // Increment frame (roughly 60 frames per second)
         frames = frames + 1;
-        if ((frames % 6) == 0)
+        if ((frames % 60) == 0)
         {
-            String timeElapsed = Integer.toString(frames / 6);
+            String timeElapsed = Integer.toString(frames / 60);
             addObject(AI1,x * TILE_SIZE -HALF_TILE_SIZE,0);
 
         }
-        if ((frames % 5) == 0)
+        if ((frames % 45) == 0)
         {
-            String timeElapsed = Integer.toString(frames / 5);
+            String timeElapsed = Integer.toString(frames / 45);
             addObject(AI3,x * TILE_SIZE -HALF_TILE_SIZE,0);
 
         }
-        if ((frames % 7) == 0)
+        if ((frames % 75) == 0)
         {
-            String timeElapsed = Integer.toString(frames / 7);
+            String timeElapsed = Integer.toString(frames / 75);
             addObject(AI2,x * TILE_SIZE -HALF_TILE_SIZE,0);
 
+        }
+        if ((frames % 150) == 0)
+        {
+            String timeElapsed = Integer.toString(frames / 150);
+            addObject(Tree,1 * TILE_SIZE,0);
+        }
+        if ((frames % 150) == 0)
+        {
+            String timeElapsed = Integer.toString(frames / 150);
+            addObject(Tree2,14 * TILE_SIZE,0);
         }
     }
 
@@ -379,10 +398,8 @@ public class SideScrollingWorld extends World
      */
     public void setGameOver()
     {
-        // if(currentScrollableWorldYPosition == 635);
-        // {
-        // isGameOver = true;
-        // }
+        //Let the game stop
+        Greenfoot.stop();
     }
 }
 

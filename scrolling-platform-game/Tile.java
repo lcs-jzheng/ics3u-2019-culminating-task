@@ -16,7 +16,7 @@ public abstract class Tile extends Actor
     // The location of this object in the scrollable world
     private int scrollableWorldPositionX;
     private int scrollableWorldPositionY;
-    
+
     /**
      * Constructor
      * 
@@ -43,7 +43,7 @@ public abstract class Tile extends Actor
     {
         setLocation(getX() + speed, getY());
     }
-    
+
     /**
      * Move up (to make hero look like they are moving up)
      */
@@ -51,8 +51,8 @@ public abstract class Tile extends Actor
     {
         setLocation(getX(), getY() - speed);
     }
-    
-     /**
+
+    /**
      * Move down (to make hero look like they are moving down)
      */
     public void moveDown(int speed)

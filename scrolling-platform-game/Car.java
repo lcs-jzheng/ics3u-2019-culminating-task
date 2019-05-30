@@ -30,11 +30,12 @@ public class Car extends Actor
     private int currentScrollableWorldYPosition;
     //Life the car got
     private int Life = 3;
-    
+
     //The score player will get
     private int Score = 0;
     //sound it will play after hitting the cars
     GreenfootSound boom;
+    GreenfootSound Success;
     /**
      * Constructor
      * 
@@ -44,9 +45,9 @@ public class Car extends Actor
     {
         // Set where hero begins horizontally
         currentScrollableWorldYPosition = initialY;
-        
 
     }
+
     /**
      * Act - do whatever the CAR wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -56,14 +57,13 @@ public class Car extends Actor
         //Score added 60 each second
         Score = Score + 1;
         boom = new GreenfootSound("explosion.wav");
-        
+        Success = new GreenfootSound("RIGHTCAR.wav");
         // Get object reference to world
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
         //Show the actors life and Score status
         world.showText("Life :" + Life, 440, 40);
-        world.showText("Score :" + Score, 40, 40);
-        
-        
+        world.showText("Score :" + Score, 60, 40);
+
         // Add your action code here.
         moveUp();
         if (Greenfoot.isKeyDown("a"))
@@ -81,40 +81,49 @@ public class Car extends Actor
         {
             AI1 enemy = (AI1)getOneIntersectingObject(AI1.class);
             getWorld().removeObject(enemy);
-            
+
             Life = Life - 1;
-            
+
             isTouchingEnemy = true;
-            
+
             boom.play();
         }
         if(isTouching(AI2.class) == true && !isTouchingEnemy)
         {
             AI2 boss = (AI2)getOneIntersectingObject(AI2.class);
             getWorld().removeObject(boss);
-            
+
             Score = Score +1000;
-           
+
             isTouchingEnemy = true;
-            
-            boom.play();
+
+            Success.play();
         }
         if(isTouching(AI3.class) == true && !isTouchingEnemy)
         {
             AI3 enemy = (AI3)getOneIntersectingObject(AI3.class);
             getWorld().removeObject(enemy);
-            
+
             Life = Life - 1;
-            
+
             isTouchingEnemy = true;
-            
+
+            boom.play();
+        }
+        if(isTouching(Tree.class) == true && !isTouchingEnemy)
+        {
+ 
+            Life = Life - 3;
+
+            isTouchingEnemy = true;
+
             boom.play();
         }
         if (isTouching(AI1.class) == false && (isTouching(AI2.class) == false && (isTouching(AI3.class) == false && isTouchingEnemy)))
         {
             isTouchingEnemy = false;
         }
-        if(Life == 0)
+        if(Life <= 0)
         {
 
             world.showText("GameOver", world.getWidth() / 2, world.getHeight() / 2);
@@ -131,8 +140,19 @@ public class Car extends Actor
         // Track direction
         verticalDirection = FACING_UP;
 
-        // Set image 
-
+        // Speed chang
+        if(isTouching(grass.class))
+        {
+            deltaY = 2;
+        }
+        if(isTouching(roadL.class))
+        {
+            deltaY = 4;
+        }
+        if(isTouching(roadR.class))
+        {
+            deltaY = 4;
+        }
         // Get object reference to world
         SideScrollingWorld world = (SideScrollingWorld) getWorld(); 
 
@@ -148,7 +168,7 @@ public class Car extends Actor
             // (Allow movement only when not at bottom edge)
             System.out.println("y position is " + currentScrollableWorldYPosition);
             System.out.println("world's height is " + world.VISIBLE_HEIGHT);
-                        
+
             if (currentScrollableWorldYPosition < world.VISIBLE_HEIGHT)
             {
                 // Move up in visible world
@@ -162,7 +182,7 @@ public class Car extends Actor
         }
         else if (currentScrollableWorldYPosition + deltaY * 2 < (world.SCROLLABLE_HEIGHT - world.HALF_VISIBLE_HEIGHT) * -1)
         {
-           
+
             // HERO IS WITHIN EXTREME UPPER PORTION OF SCROLLABLE WORLD
             // So... actually move the actor within the visible world.
             System.out.println("extreme top");
