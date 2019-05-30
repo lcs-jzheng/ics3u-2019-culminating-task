@@ -65,6 +65,7 @@ public class Car extends Actor
         world.showText("Score :" + Score, 60, 40);
 
         // Add your action code here.
+       
         moveUp();
         if (Greenfoot.isKeyDown("a"))
         {

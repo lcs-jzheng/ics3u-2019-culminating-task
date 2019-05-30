@@ -42,8 +42,13 @@ public class SideScrollingWorld extends World
 
     //Keep track of the time in the game
     private int frames = 0;
-    
+
+    //BGM for the game
     GreenfootSound backgroundMusic = new GreenfootSound("SH_BGM.mp3");
+
+    // Beginning image for the game
+    private GreenfootImage image1;
+    private GreenfootImage image2;
     /**
      * Constructor for objects of class SideScrollingWorld.
      */
@@ -53,13 +58,18 @@ public class SideScrollingWorld extends World
         // Final argument of 'false' means that actors in the world are not restricted to the world boundary.
         // See: https://www.greenfoot.org/files/javadoc/greenfoot/World.html#World-int-int-int-boolean-
         super(VISIBLE_WIDTH, VISIBLE_HEIGHT, 1, false);
+        //There are two images to switch, one is the cover page and the other is the race track.
+        image1 = new GreenfootImage("asphalt.png");
+        image2 = new GreenfootImage("OPENING.png");
+        setBackground(image2);
+        if(getBackground() == image2)
+        {frames = 0;
 
-        // Set up the starting scene
+        }
         setup();
-
         // Game on
         isGameOver = false;
-        
+
         backgroundMusic.playLoop();
     }
 
@@ -96,8 +106,7 @@ public class SideScrollingWorld extends World
         //addObject(someGround,x,y);
 
         //}
-        
-        
+
         //Add some sides on the left
         for (int i = 1; i <= 501; i += 1)
         {
@@ -275,8 +284,7 @@ public class SideScrollingWorld extends World
      */
     public void act()
     {
-        
-        
+        setBackground(image1);
         // Every 60 frames, update the time
         int x = 4 + Greenfoot.getRandomNumber(8);
         AI1 AI1 = new AI1();
@@ -284,8 +292,11 @@ public class SideScrollingWorld extends World
         AI3 AI3 = new AI3();
         Tree Tree = new Tree();
         Tree Tree2 = new Tree();
+
         // Increment frame (roughly 60 frames per second)
-        frames = frames + 1;
+
+            frames = frames + 1;
+
         if ((frames % 60) == 0)
         {
             String timeElapsed = Integer.toString(frames / 60);
@@ -316,20 +327,7 @@ public class SideScrollingWorld extends World
         }
     }
 
-    /**
-     * Add the hero to the world.
-     */
-    private void addHero()
-    {
-        // Initial horizontal position
-        int initialX = TILE_SIZE * 2;
-
-        // Instantiate the hero object
-        theHero = new Hero(initialX);
-
-        // Add hero in bottom left corner of screen
-        addObject(theHero, initialX, getHeight() / 5);
-    }
+   
 
     /**
      * Add the CAR to the world.
@@ -346,52 +344,7 @@ public class SideScrollingWorld extends World
         addObject(theCAR, initialX, initialY );
     }
 
-    /**
-     * Add blocks to create the ground to walk on at top-right of scrollable world.
-     */
-    private void addRightGround()
-    {
-        // Constants to control dimensions of the ground at end of world
-        final int COUNT_OF_GROUND = 8;
-        final int GROUND_BELOW_COLUMNS = COUNT_OF_GROUND;
-        final int GROUND_BELOW_ROWS = 6;
-        final int COUNT_OF_GROUND_BELOW = GROUND_BELOW_COLUMNS * GROUND_BELOW_ROWS;
-
-        // 1. Make ground at end of level (top layer)
-        for (int i = 0; i < COUNT_OF_GROUND; i += 1)
-        {
-            // Position in wider scrollable world
-            int x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - i * TILE_SIZE;
-            int y = HALF_VISIBLE_HEIGHT + TILE_SIZE;
-
-            // Create object and add it
-            Ground ground = new Ground(x, y);
-            addObject(ground, x, y);
-        }
-
-        // 2. Make sub-ground at end of level (below top layer)
-        for (int i = 0; i < GROUND_BELOW_COLUMNS; i += 1)
-        {
-            for (int j = 0; j < GROUND_BELOW_ROWS; j += 1)
-            {
-                // Position in wider scrollable world
-                int x = SCROLLABLE_WIDTH - HALF_TILE_SIZE - i * TILE_SIZE;
-                int y = HALF_VISIBLE_HEIGHT + TILE_SIZE + TILE_SIZE * (j + 1);
-
-                // Create object and add it
-                GroundBelow groundBelow = new GroundBelow(x, y);
-                addObject(groundBelow, x, y);
-            }
-        }
-    }
-
-    /**
-     * Return an object reference to the hero.
-     */
-    public Hero getHero()
-    {
-        return theHero;
-    }
+    
 
     /**
      * Set game over
